@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>BootsFaces: the next-gen JSF Framework based on Bootstrap</title>
+        
+        <!--  Meta section -->
+        <meta name="author" content="Dario D'Urzo" />
+        <meta name="description" content="BootsFaces, a powerful JSF framework that takes the best from Bootstrap and jQuery UI to let develop well-designed state-of-the-art next-gen Front-end Enterprise Applications fast and easy supporting HTML5." />
+        <meta name="KEYWORDS" content="jsf, bootstrap, framework, java, enterprise, server, faces, jquery, usability, next-gen, web, html5, easy, modern, well-designed, website, state-of-the-art" />
+        <meta name="robots" content="index, follow" />
+        <meta name="revisit-after" content="7 days" />
+        <meta name="DISTRIBUTION" content="GLOBAL" />
+        <meta http-equiv="PRAGMA" content="NO-CACHE" />
+        <meta name="copyright" content="TheCoder4.eu ( Riccardo Massera ), Stephan Rauh, Dario D'Urzo et al." />
+        
+		<!--  Styles section -->
+		<h:outputStylesheet library="theme" name="bsf.showcase.theme.css" />
+		<h:outputStylesheet library="css" name="main.css" />
+		<h:outputStylesheet library="css" name="syntaxhighlighter.theme.css" />
+		
+		<!--  Theme switcher section -->
+		<!--  
+        <h:outputStylesheet library="customthemes" name="#{theme.customTheme}/bootstrap.min.css"  rendered="#{theme.customTheme ne ''}"/>
+        <h:outputStylesheet library="customthemes" name="#{theme.customTheme}/#{theme.customTheme}.css" rendered="#{theme.customTheme ne ''}"/>
+    	-->
+    </h:head>
+    
+    <h:body addLabels="false" addMessages="false">
+        <script>
+        if ($.blockUI) {
+          	$.blockUI.defaults.overlayCSS.opacity=0;
+          	$.blockUI.defaults.message='<h1><img src="../javax.faces.resource/images/waitcursor.gif.jsf?ln=bsf" /></h1>';
+        }
+        </script>         
+        <ui:insert name="nbtop">
+            <ui:include src="/pages/template/header.xhtml"/>
+        </ui:insert>
+        
+        <ui:insert name="content"/>
+        
+        <ui:insert name="nbtop">
+            <ui:include src="/pages/template/footer.xhtml"/>
+        </ui:insert>
+        
+        <!--  scripts section  -->
+		<h:outputScript library="js" name="syntaxhighlighter.js" />
+		<h:outputScript library="js" name="clipboard.min.js" />
+		<h:outputScript library="js" name="clipboard.snippet.js" />
+    </h:body>
+</html>
