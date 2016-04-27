@@ -28,6 +28,8 @@
         <h:outputStylesheet library="customthemes" name="#{theme.customTheme}/bootstrap.min.css"  rendered="#{theme.customTheme ne ''}"/>
         <h:outputStylesheet library="customthemes" name="#{theme.customTheme}/#{theme.customTheme}.css" rendered="#{theme.customTheme ne ''}"/>
     	-->
+    	
+    	<ui:insert name="custom-header" />
     </h:head>
     
     <h:body addLabels="false" addMessages="false">
