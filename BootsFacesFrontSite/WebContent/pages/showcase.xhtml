@@ -34,7 +34,7 @@
 			margin-top: 20px;
 		}
 		
-		#vis-item {
+		#vis-breadcrumb {
 			margin: auto;
 			text-align: center;
 		}
@@ -64,11 +64,12 @@
 
 	<ui:define name="content">
 		<b:container id="menu-content" style="text-align:center;">
+			<div id="vis-breadcrumb"><h:outputText value="&#160;" /></div>
 			<div id="vis"><h:outputText value="&#160;" /></div>
 
 			<script>
 	         $(function() {
-	            $.pieMenu({ jsonUrl: "#{resource['json:bsfmenu.json']}", logoUrl: "#{resource['images:BsfMenuCenter.png']}", render3D: true });
+	            $.pieMenu({ jsonUrl: "#{resource['json:bsfmenu.json']}", logoUrl: "#{resource['images:BootsFacesLogo.Sticker.png']}", render3D: false });
 	         });
 	
 	         $(window).on('resize', function() {

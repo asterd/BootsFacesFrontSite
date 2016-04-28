@@ -21,10 +21,13 @@
          width = width / 1.1;
          height = width;
       }
+      
+      var divider = 2.4;
+      if (o.render3D) divider = 2.1;
 
       // set sizes
       var radius = width / 2,
-          arcInner = radius / 2,
+          arcInner = radius / divider,
           arcOuter = radius - 4,
           padding = 5;
 
@@ -57,13 +60,45 @@
                  }\
              }")
              .appendTo("head");
-       }
+      }
+      
+      // Update the breadcrumb trail to show the current sequence and percentage.
+      function updateBreadcrumbs(currentName) {
+    	  $('#vis-breadcrumb').empty();
+    	  var name_array = new Array();
+    	  if(currentName != undefined) {
+    		  name_array.push(currentName);
+    		  var item = findParent(_root, currentName);
+    		  while(item != undefined) {
+    			  if(item.name != undefined) {
+    				  name_array.push(item.name);
+    			  }
+    			  item = findParent(_root, item.name);
+    		  }
+    	  }
+    	  name_array.push('HOME');
+    	  var list = $("#vis-breadcrumb").append('<ul class="breadcrumb"></ul>').find('ul');
+		  for (var i = name_array.length - 1; i >= 0; i--) {
+			  if(name_array[i] != undefined) {
+				  var nameToRender = name_array[i];
+				  if(nameToRender === 'HOME') nameToRender = '<i class="fa fa-home"></i>';
+				  
+				  if(i == 0) 
+					  list.append('<li>' + nameToRender + '</li>');
+				  else
+					  list.append('<li><a href="#" onclick="$.pieMenu.showNode(\'' + name_array[i] + '\');">' + nameToRender + '</a></li>');
+			  }
+		  }
+      };
 
       // internal functions
       function updatePieData(root) {
          // empty container
          $('#' + o.containerID).empty();
          $('#' + o.containerID).disableSelection();
+         
+         // display breadcrumb
+         updateBreadcrumbs(root.name);
 
          // define pie
          var pie = d3.layout.pie()
@@ -266,7 +301,7 @@
             $('#info-text').hide();
             $('#bsflogo').show();
          };
-
+         
          // Fade all but the current sequence, and show it in the breadcrumb trail.
          function mouseover(d) {
             // Then highlight only those that are an ancestor of the current segment.
@@ -340,6 +375,41 @@
          }
          return false;
       }
+   };
+   
+   // Show the selected node
+   $.fn.pieMenu.showNode = function(nodeName) {
+	   if(nodeName === 'HOME') {
+		   _currentNodeList = _root; 
+		   $.pieMenu(o);
+	   }
+	   else {
+		   var nodeToShow = findNode(_root, nodeName);
+		   if(nodeToShow != undefined) {
+			   _currentNodeList = nodeToShow; 
+			   $.pieMenu(o);
+		   }
+	   }
+	   
+	   // Find node parent
+       function findNode(rootNode, name) {
+         var itemToCycle;
+
+         // set the correct type for search
+         if($.isArray(rootNode)) itemToCycle = rootNode;
+         else if(rootNode.children != undefined) itemToCycle = rootNode.children;
+         else return;
+
+         // cycle
+         for (var index = 0; index < itemToCycle.length; index++) {
+            if(itemToCycle[index].name === name) {
+               return itemToCycle[index];
+            } else if(itemToCycle[index].children != undefined) {
+               var node = findNode(itemToCycle[index], name);
+               if(node != undefined) return node;
+            }
+         }
+       };
    };
 
    // Resize function
