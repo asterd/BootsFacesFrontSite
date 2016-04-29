@@ -19,7 +19,7 @@
         <meta name="copyright" content="TheCoder4.eu ( Riccardo Massera ), Stephan Rauh, Dario D'Urzo et al." />
         
 		<!--  Styles section -->
-		<h:outputStylesheet library="theme" name="bsf.orangered.theme.css" />
+		<h:outputStylesheet library="theme" name="bsf.orange.theme.css" />
 		<h:outputStylesheet library="css" name="main.css" />
 		<h:outputStylesheet library="css" name="syntaxhighlighter.theme.css" />
 		
@@ -53,5 +53,30 @@
 		<h:outputScript library="js" name="syntaxhighlighter.js" />
 		<h:outputScript library="js" name="clipboard.min.js" />
 		<h:outputScript library="js" name="clipboard.snippet.js" />
+		<script type="text/javascript">
+		// Page scrolling style
+			// get the value of the bottom of the #main element by adding the offset of that element plus its height, set it as a variable
+			var mainbottom = $('#main').offset().top + $('#main').height() - 20;
+	
+			// on scroll, 
+			$(window).on('scroll',function(){
+			    // we round here to reduce a little workload
+			    var stop = Math.round($(window).scrollTop());
+	
+			    if (stop > mainbottom) {
+			        $('#main').addClass('navbar-scrolled');
+			    } else {
+			        $('#main').removeClass('navbar-scrolled');
+			    }
+			});
+		// End of page scrolling style
+		
+		// Active menu in bar
+			$(document).ready(function() {
+				$(".nav").find(".active").removeClass("active");
+				$(".nav").find('a[href$="' + window.location.pathname + '"]') .parent().addClass("active");
+			});
+		// End of active menu in bar
+		</script>
     </h:body>
 </html>

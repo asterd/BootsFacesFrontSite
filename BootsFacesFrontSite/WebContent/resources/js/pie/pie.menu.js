@@ -241,7 +241,12 @@
                   }
                }
             });
-         addCenterText("");
+         
+         // put name of parent or logo
+         if(root.name != undefined)
+        	 addCenterText(root.name);
+         else
+        	 addCenterText("");
 
          // split string in two parts balanced
          function easySplit(str, maxChunks) {
@@ -275,7 +280,16 @@
                     })
                     .style({
                         fill : '#666'
-                    });
+                    })
+                    .on("click", function() {
+                        if(_currentNodeList.name != undefined) {
+                           var parent = findParent(_root, _currentNodeList.name);
+                           if(parent != undefined) {
+                              _currentNodeList = parent;
+                              updatePieData(parent);
+                           }
+                        }
+                     });
               }
 
               // Wrap text in a circle, and size the text to fit.
@@ -316,7 +330,13 @@
          function mouseleave(d) {
             d3.selectAll(".path1")
               .attr("fill", function(node) { return node.data.colour; });
-            hideCenterText();
+            
+            // put name of parent or hide
+            if(root.name != undefined) {
+            	hideCenterText();
+            	addCenterText(root.name);
+            } else
+            	hideCenterText();
          };
 
          // click on leaf node
