@@ -38,7 +38,11 @@
           	$.blockUI.defaults.overlayCSS.opacity=0;
           	$.blockUI.defaults.message='<h1><img src="../javax.faces.resource/images/waitcursor.gif.jsf?ln=bsf" /></h1>';
         }
-        </script>         
+        </script>  
+        
+        <!-- scrollup -->
+        <b:scrollUp distance="200" animation="fade" text="" scrollTitle="false" name="bsfScroll" />
+               
         <ui:insert name="nbtop">
             <ui:include src="/pages/template/header.xhtml"/>
         </ui:insert>
