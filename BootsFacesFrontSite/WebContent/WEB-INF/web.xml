@@ -20,7 +20,7 @@
   </context-param>
   <context-param>
     <param-name>BootsFaces_THEME</param-name>
-    <param-value>#{theme.internalTheme}</param-value>
+    <param-value>custom</param-value>
   </context-param>
   <context-param>
     <param-name>BootsFaces_USETHEME</param-name>

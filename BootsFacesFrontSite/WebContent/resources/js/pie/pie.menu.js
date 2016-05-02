@@ -54,11 +54,14 @@
             .prop("type", "text/css")
             .prop("id", "pie-resize")
             .html("\
-             @media screen and (max-width:520px) {\
+             @media screen and (max-width: 520px) {\
                  .s-text {\
                     font-size: 2.5vw !important;\
                  }\
-             }")
+             }\
+             @media screen and (max-height: 500px) {\
+             	 .s-text { font-size: .9vw !important; }\
+      		 }")
              .appendTo("head");
       }
       
@@ -125,19 +128,19 @@
                .append('pattern')
                .attr( {
                                id: 'bsflogo',
-                                x: radius / 2.4,
-                                y: radius / 2.4,
-                     patternUnits: 'userSpaceOnUse',
-                            width: radius / 1.2,
-                           height: radius / 1.2
+                                x: 0.1,
+                                y: 0.1,
+                     patternUnits: 'objectBoundingBox',
+                            width: 1,
+                           height: 1
                })
                .append("image")
                .attr("xlink:href", o.logoUrl)
                .attr( {
                                x: 0,
                                y: 0,
-                           width: radius / 1.2,
-                          height: radius / 1.2
+                           width: radius / 1.6,
+                          height: radius / 1.6
                });
          }
 

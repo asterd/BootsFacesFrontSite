@@ -18,17 +18,13 @@
         <meta http-equiv="PRAGMA" content="NO-CACHE" />
         <meta name="copyright" content="TheCoder4.eu ( Riccardo Massera ), Stephan Rauh, Dario D'Urzo et al." />
         
-		<!--  Styles section -->
-		<h:outputStylesheet library="theme" name="bsf.orange.theme.css" />
-		<h:outputStylesheet library="css" name="main.css" />
-		<h:outputStylesheet library="css" name="syntaxhighlighter.theme.css" />
+        <!--  Theme -->
+		<h:outputStylesheet library="theme" name="blue/bootstrap.theme.css" />
+		<h:outputStylesheet library="theme" name="blue/custom.css" /> <!--  {theme.customTheme} -->
 		
-		<!--  Theme switcher section -->
-		<!--  
-        <h:outputStylesheet library="customthemes" name="#{theme.customTheme}/bootstrap.min.css"  rendered="#{theme.customTheme ne ''}"/>
-        <h:outputStylesheet library="customthemes" name="#{theme.customTheme}/#{theme.customTheme}.css" rendered="#{theme.customTheme ne ''}"/>
-    	-->
-    	
+		<!--  Styles section -->
+		<h:outputStylesheet library="css" name="syntaxhighlighter.theme.css" />
+    
     	<ui:insert name="custom-header" />
     </h:head>
     
@@ -41,7 +37,7 @@
         </script>  
         
         <!-- scrollup -->
-        <b:scrollUp distance="200" animation="fade" text="" scrollTitle="false" name="bsfScroll" />
+        <b:scrollUp distance="200" animation="fade" text="" scrollTitle="false" name="bsf-scroll" />
                
         <ui:insert name="nbtop">
             <ui:include src="/pages/template/header.xhtml"/>
@@ -77,8 +73,8 @@
 		
 		// Active menu in bar
 			$(document).ready(function() {
-				$(".nav").find(".active").removeClass("active");
-				$(".nav").find('a[href$="' + window.location.pathname + '"]') .parent().addClass("active");
+				$(".navbar").find(".active").removeClass("active");
+				$(".navbar").find('a[href$="' + window.location.pathname + '"]') .parent().addClass("active");
 			});
 		// End of active menu in bar
 		</script>
