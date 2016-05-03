@@ -128,19 +128,19 @@
                .append('pattern')
                .attr( {
                                id: 'bsflogo',
-                                x: 0.1,
-                                y: 0.1,
-                     patternUnits: 'objectBoundingBox',
-                            width: 1,
-                           height: 1
+                                x: radius / 2.4,
+                                y: radius / 2.4,
+                     patternUnits: 'userSpaceOnUse',
+                            width: radius / 1.2,
+                           height: radius / 1.2
                })
                .append("image")
                .attr("xlink:href", o.logoUrl)
                .attr( {
                                x: 0,
                                y: 0,
-                           width: radius / 1.6,
-                          height: radius / 1.6
+                           width: radius / 1.2,
+                          height: radius / 1.2
                });
          }
 

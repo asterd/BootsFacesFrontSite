@@ -19,11 +19,16 @@
         <meta name="copyright" content="TheCoder4.eu ( Riccardo Massera ), Stephan Rauh, Dario D'Urzo et al." />
         
         <!--  Theme -->
-		<h:outputStylesheet library="theme" name="blue/bootstrap.theme.css" />
-		<h:outputStylesheet library="theme" name="blue/custom.css" /> <!--  {theme.customTheme} -->
+		<h:outputStylesheet library="theme" name="orange_teal/bootstrap.theme.css" />
+		<h:outputStylesheet library="theme" name="orange_teal/custom.css" /> <!--  {theme.customTheme} -->
 		
 		<!--  Styles section -->
 		<h:outputStylesheet library="css" name="syntaxhighlighter.theme.css" />
+		
+		<!--  Font includes -->
+		<!--  link href='http://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css' />
+    	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' /-->
+    	<link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css' />
     
     	<ui:insert name="custom-header" />
     </h:head>
@@ -37,7 +42,7 @@
         </script>  
         
         <!-- scrollup -->
-        <b:scrollUp distance="200" animation="fade" text="" scrollTitle="false" name="bsf-scroll" />
+        <b:scrollUp distance="180" animation="fade" text="" scrollTitle="false" name="bsf-scroll" />
                
         <ui:insert name="nbtop">
             <ui:include src="/pages/template/header.xhtml"/>
